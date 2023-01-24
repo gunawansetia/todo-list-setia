@@ -1,0 +1,19 @@
+.nav {
+    width: 100vw;
+    height: 52px;
+    background-color: var(--secondary-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navIcon {
+    width: 35px;
+ 
+}
+
+.title {
+
+    font-weight: 600;
+    
+}
