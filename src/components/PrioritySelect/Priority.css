@@ -1,0 +1,5 @@
+.priority .MuiOutlinedInput-notchedOutline {
+    border-color: var(--urgent-important-select-color);
+    border-width: 3px;
+    border-radius: 10px;
+}
