@@ -1,6 +1,7 @@
 import { FormControl, MenuItem, Select } from "@mui/material";
 import "./DaySelect.css";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 const initDaySelect = [
   { value: "today", text: "Today" },
@@ -11,11 +12,18 @@ const initDaySelect = [
 const DaySelect = ({ value }) => {
   return (
     <>
-      <FormControl>
+      <FormControl
+        sx={{
+          padding: "10px 10px",
+        }}
+      >
         <Select
           id="day-select"
+          sx={{ width: "12vw" }}
           value={value}
-          className="day MuiOutlinedInput-notchedOutline"
+          className={classNames("day", {
+            tomorrow: value === "tomorrow",
+          })}
           inputProps={{ "aria-label": "Day Select" }}
         >
           {initDaySelect.map((item, index) => {

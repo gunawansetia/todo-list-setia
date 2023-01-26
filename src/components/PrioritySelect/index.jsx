@@ -1,6 +1,8 @@
+import styled from "@mui/styled-engine";
 import { FormControl, FormHelperText, MenuItem, Select } from "@mui/material";
 import PropTypes from "prop-types";
 import "./Priority.css";
+import classNames from "classnames";
 
 const initPrioritySelect = [
   { value: "Urgent&Important", text: "Urgent - Important" },
@@ -9,13 +11,19 @@ const initPrioritySelect = [
   { value: "NotUrgent&NotImportant", text: "Not Urgent - Not Important" },
 ];
 
+const UseSelect = styled(Select)(() => ({
+  width: "20vw",
+}));
+
 const PrioritySelect = ({ value }) => {
   return (
     <>
-      <FormControl sx={{ margin: "auto 15px" }}>
-        <Select
+      <FormControl sx={{ padding: "10px 10px" }}>
+        <UseSelect
           inputProps={{ "aria-label": "Priority Select" }}
-          className="priority MuiOutlinedInput-notchedOutline"
+          className={classNames("priority", {
+            NotUrgImp: value === "NotUrgent&Important",
+          })}
           id="priority-select"
           value={value}
         >
@@ -26,7 +34,7 @@ const PrioritySelect = ({ value }) => {
               </MenuItem>
             );
           })}
-        </Select>
+        </UseSelect>
       </FormControl>
     </>
   );

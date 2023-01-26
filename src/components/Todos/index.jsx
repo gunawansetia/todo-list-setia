@@ -4,24 +4,38 @@ import DaySelect from "../DaySelect";
 import PrioritySelect from "../PrioritySelect";
 import styles from "./Todos.module.css";
 
-let initTodos = {
-  text: "PR Matematika",
-  check: false,
-  priority: "Urgent&Important",
-  day: "today",
-};
+import classNames from "classnames";
+
+let initTodos = [
+  {
+    text: "PR Matematika",
+    check: false,
+    priority: "Urgent&Important",
+    day: "today",
+  },
+  {
+    text: "Belajar Coding di Youtube",
+    check: false,
+    priority: "NotUrgent&Important",
+    day: "tomorrow",
+  },
+];
 
 const Todos = () => {
-  return (
-    <div className={styles.todos}>
+  return initTodos.map((todo, index, arr) => (
+    <div
+      className={classNames(styles.todos, {
+        [styles.todoDivider]: !(index + 1 === arr.length),
+      })}
+    >
       <img className={styles.icBox} src={ic_box_check} alt="ic_box" />
-      {initTodos.text}
+      {todo.text}
       <div className={styles.allSelect}>
-        <PrioritySelect value={initTodos.priority} />
-        <DaySelect value={initTodos.day} />
+        <PrioritySelect value={todo.priority} />
+        <DaySelect value={todo.day} />
       </div>
     </div>
-  );
+  ));
 };
 
 export default Todos;

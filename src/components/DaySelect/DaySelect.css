@@ -1,3 +1,7 @@
+.day.tomorrow .MuiOutlinedInput-notchedOutline {
+    border-color: var(--day-tomorrow-color);
+}
+
 .day .MuiOutlinedInput-notchedOutline {
     border-color: #3886F7;
     border-width: 3px;

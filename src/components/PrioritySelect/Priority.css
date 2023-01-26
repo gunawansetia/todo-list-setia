@@ -3,3 +3,7 @@
     border-width: 3px;
     border-radius: 10px;
 }
+
+.priority.NotUrgImp .MuiOutlinedInput-notchedOutline {
+    border-color: var(--not-urgent-important-select-color);
+}

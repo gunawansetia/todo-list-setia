@@ -1,16 +1,21 @@
 .todos {
     display: flex;
     align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
 
 }
 
 .icBox {
-    width: 50px;
-    height: 50px;
+    width: 35px;
     margin: auto 10px;
     
 }
 
 .allSelect {
     margin-left: auto;
+}
+
+.todoDivider {
+    border-bottom: 1px solid var(--main-divider-color)
 }

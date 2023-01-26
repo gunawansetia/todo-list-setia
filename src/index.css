@@ -20,9 +20,13 @@ code {
   --secondary-task-background-color: #F5F5F5;
 
   --urgent-important-select-color: #EE0000;
-  --urgent-not-important-select-color: #3886F7;
-  --not-urgent-important-select-color: #FBD7A6;
+  --not-urgent-important-select-color: #3886F7;
+  
+  --urgent-not-important-select-color: #FBD7A6;
   --not-urgent-not-important-select-color: #53A601;
+  
+  --main-divider-color: #D9D9D9;
+  --day-tomorrow-color: #FBD7A6;
 
 }
 
