@@ -3,15 +3,17 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import Todos from "./components/Todos";
+import AddInput from "./components/AddInput";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />;
       <Container>
+        <AddInput />
         <Todos />
       </Container>
-    </div>
+    </>
   );
 }
 

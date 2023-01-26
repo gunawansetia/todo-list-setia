@@ -7,7 +7,7 @@ import { useState } from "react";
 const initDaySelect = [
   { value: "today", text: "Today" },
   { value: "tomorrow", text: "Tomorrow" },
-  { value: "", text: "-" },
+  { value: "none", text: "-" },
 ];
 
 const DaySelect = ({ value }) => {
@@ -30,6 +30,7 @@ const DaySelect = ({ value }) => {
           value={select}
           onChange={handleChange}
           className={classNames("day", {
+            today: select === "today",
             tomorrow: select === "tomorrow",
           })}
           inputProps={{ "aria-label": "Day Select" }}

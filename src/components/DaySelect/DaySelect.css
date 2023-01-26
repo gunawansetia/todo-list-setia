@@ -1,9 +1,13 @@
-.day.tomorrow .MuiOutlinedInput-notchedOutline {
-    border-color: var(--day-tomorrow-color);
-}
-
 .day .MuiOutlinedInput-notchedOutline {
-    border-color: #3886F7;
+    border-color: gray;
     border-width: 3px;
     border-radius: 10px;
+}
+
+.day.today .MuiOutlinedInput-notchedOutline {
+    border-color: var(--day-today-color)
+}
+
+.day.tomorrow .MuiOutlinedInput-notchedOutline {
+    border-color: var(--day-tomorrow-color);
 }
