@@ -1,9 +1,20 @@
 .priority .MuiOutlinedInput-notchedOutline {
-    border-color: var(--urgent-important-select-color);
     border-width: 3px;
     border-radius: 10px;
 }
 
-.priority.NotUrgImp .MuiOutlinedInput-notchedOutline {
+
+.priority.UrgentImportant .MuiOutlinedInput-notchedOutline  {
+    border-color: var(--urgent-important-select-color);
+}
+
+.priority.NotUrgentImportant .MuiOutlinedInput-notchedOutline {
     border-color: var(--not-urgent-important-select-color);
 }
+
+.priority.UrgentNotImportant .MuiOutlinedInput-notchedOutline {
+    border-color: var(--urgent-not-important-select-color);
+}
+.priority.NotUrgentNotImportant .MuiOutlinedInput-notchedOutline {
+    border-color: var(--not-urgent-not-important-select-color);
+} 

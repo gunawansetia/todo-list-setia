@@ -2,6 +2,7 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import "./DaySelect.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { useState } from "react";
 
 const initDaySelect = [
   { value: "today", text: "Today" },
@@ -10,6 +11,12 @@ const initDaySelect = [
 ];
 
 const DaySelect = ({ value }) => {
+  const [select, setSelect] = useState(value ? value : "");
+
+  const handleChange = (e) => {
+    setSelect(e.target.value);
+  };
+
   return (
     <>
       <FormControl
@@ -20,9 +27,10 @@ const DaySelect = ({ value }) => {
         <Select
           id="day-select"
           sx={{ width: "12vw" }}
-          value={value}
+          value={select}
+          onChange={handleChange}
           className={classNames("day", {
-            tomorrow: value === "tomorrow",
+            tomorrow: select === "tomorrow",
           })}
           inputProps={{ "aria-label": "Day Select" }}
         >
