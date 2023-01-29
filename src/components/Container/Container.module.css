@@ -1,6 +1,7 @@
 .container {
     padding: 16px;
     margin: 0 auto;
+    border-radius: 15px;
     max-width: 1000px;
     background-color: var(--secondary-background-color);
  }

@@ -20,7 +20,7 @@ const initPrioritySelect = [
 ];
 
 const UseSelect = styled(Select)(() => ({
-  width: "20vw",
+  width: "18vw",
   ":hover .MuiOutlinedInput-notchedOutline": {
     borderColor: "gray",
   },

@@ -1,29 +1,16 @@
-import { Grid, MenuItem, Select } from "@mui/material";
+import PropTypes from "prop-types";
 import ic_box_check from "../../assets/ic_box_check.svg";
 import DaySelect from "../DaySelect";
 import PrioritySelect from "../PrioritySelect";
 import styles from "./Todos.module.css";
 
 import classNames from "classnames";
+import { useState } from "react";
 
-let initTodos = [
-  {
-    text: "PR Matematika",
-    check: false,
-    priority: "Urgent&Important",
-    day: "today",
-  },
-  {
-    text: "Belajar Coding di Youtube",
-    check: false,
-    priority: "NotUrgent&Important",
-    day: "tomorrow",
-  },
-];
-
-const Todos = () => {
-  return initTodos.map((todo, index, arr) => (
+const Todos = ({ todos }) => {
+  return todos.map((todo, index, arr) => (
     <div
+      key={index}
       className={classNames(styles.todos, {
         [styles.todoDivider]: !(index + 1 === arr.length),
       })}
@@ -36,6 +23,10 @@ const Todos = () => {
       </div>
     </div>
   ));
+};
+
+Todos.propTypes = {
+  todos: PropTypes.array,
 };
 
 export default Todos;
