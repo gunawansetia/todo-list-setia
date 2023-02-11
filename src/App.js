@@ -4,21 +4,32 @@ import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import Todos from "./components/Todos";
 import AddInput from "./components/AddInput";
-import { useState } from "react";
+import { useState, createContext } from "react";
+import Info from "./components/Info";
 
 let initTodos = [
   {
+    id: 1,
     text: "PR Matematika",
     check: false,
     priority: "Urgent&Important",
     day: "today",
   },
   {
+    id: 2,
     text: "Belajar Coding di Youtube",
     check: false,
     priority: "NotUrgent&Important",
     day: "tomorrow",
   },
+];
+
+export const MyContext = createContext();
+
+const initDaySelect = [
+  { value: "today", text: "Today" },
+  { value: "tomorrow", text: "Tomorrow" },
+  { value: "none", text: "-" },
 ];
 
 function App() {
@@ -29,6 +40,16 @@ function App() {
     setValue(e.target.value);
   };
 
+  const updateDay = (event, id, arr) => {
+    const newState = todos.map((item) => {
+      if (item.id === id) {
+        return { ...item, day: event.target.value };
+      }
+      return item;
+    });
+    setTodos(newState);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!value) {
@@ -37,23 +58,47 @@ function App() {
     setTodos([
       ...todos,
       {
+        id: todos.length + 1,
         text: value,
         check: false,
         priority: "Urgent&Important",
-        day: "none",
+        day: "today",
       },
     ]);
 
     setValue("");
   };
 
+  const jumlahTodayTask = () => {
+    return todos.filter((el) => el.day.includes("today"));
+  };
+
+  const jumlahTomorrow = () => {
+    return todos.filter((el) => el.day.includes("tomorrow"));
+  };
+
   return (
     <>
-      <Navbar />
-      <AddInput value={value} onSubmit={handleSubmit} onChange={handleChange} />
-      <Container>
-        <Todos todos={todos} />
-      </Container>
+      <MyContext.Provider
+        value={{
+          initDaySelect,
+        }}
+      >
+        <Navbar />
+        <AddInput
+          value={value}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+        />
+        <Container>
+          <Info
+            totalTask={todos.length}
+            todayTask={jumlahTodayTask().length}
+            tomorrowTask={jumlahTomorrow().length}
+          />
+          <Todos todos={todos} updateDay={updateDay} />
+        </Container>
+      </MyContext.Provider>
     </>
   );
 }

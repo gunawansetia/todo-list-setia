@@ -3,14 +3,16 @@ import ic_box_check from "../../assets/ic_box_check.svg";
 import DaySelect from "../DaySelect";
 import PrioritySelect from "../PrioritySelect";
 import styles from "./Todos.module.css";
-
 import classNames from "classnames";
-import { useState } from "react";
 
-const Todos = ({ todos }) => {
+const Todos = ({ todos, updateDay }) => {
+  const handleChange = (event, id, arr) => {
+    updateDay(event, id, arr);
+  };
+
   return todos.map((todo, index, arr) => (
     <div
-      key={index}
+      key={todo.id}
       className={classNames(styles.todos, {
         [styles.todoDivider]: !(index + 1 === arr.length),
       })}
@@ -19,7 +21,12 @@ const Todos = ({ todos }) => {
       {todo.text}
       <div className={styles.allSelect}>
         <PrioritySelect value={todo.priority} />
-        <DaySelect value={todo.day} />
+        <DaySelect
+          value={todo.day}
+          onChange={(event) => {
+            handleChange(event, todo.id, arr);
+          }}
+        />
       </div>
     </div>
   ));
@@ -27,6 +34,7 @@ const Todos = ({ todos }) => {
 
 Todos.propTypes = {
   todos: PropTypes.array,
+  onSubmit: PropTypes.object,
 };
 
 export default Todos;

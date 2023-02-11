@@ -2,18 +2,14 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import "./DaySelect.css";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "../../App";
 
-const initDaySelect = [
-  { value: "today", text: "Today" },
-  { value: "tomorrow", text: "Tomorrow" },
-  { value: "none", text: "-" },
-];
+const DaySelect = ({ value, onChange }) => {
+  const [select, setSelect] = useState(value);
+  const { initDaySelect } = useContext(MyContext);
 
-const DaySelect = ({ value }) => {
-  const [select, setSelect] = useState(value ? value : "");
-
-  const handleChange = (e) => {
+  const handleSelect = (e) => {
     setSelect(e.target.value);
   };
 
@@ -28,7 +24,10 @@ const DaySelect = ({ value }) => {
           id="day-select"
           sx={{ width: "12vw" }}
           value={select}
-          onChange={handleChange}
+          onChange={(e) => {
+            onChange(e);
+            handleSelect(e);
+          }}
           className={classNames("day", {
             today: select === "today",
             tomorrow: select === "tomorrow",
