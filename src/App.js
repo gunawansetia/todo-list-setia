@@ -6,6 +6,7 @@ import Todos from "./components/Todos";
 import AddInput from "./components/AddInput";
 import { useState, createContext } from "react";
 import Info from "./components/Info";
+import TodosDone from "./components/TodosDone";
 
 let initTodos = [
   {
@@ -24,6 +25,16 @@ let initTodos = [
   },
 ];
 
+let allDoneTodos = [
+  {
+    id: 10,
+    text: "PR Bahasa",
+    check: false,
+    priority: "Urgent&Important",
+    day: "tomorrow",
+  },
+];
+
 export const MyContext = createContext();
 
 const initDaySelect = [
@@ -34,6 +45,7 @@ const initDaySelect = [
 
 function App() {
   const [todos, setTodos] = useState(initTodos);
+  const [doneTodos, setDoneTodos] = useState(allDoneTodos);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -98,6 +110,7 @@ function App() {
           />
           <Todos todos={todos} updateDay={updateDay} />
         </Container>
+        <TodosDone doneTodos={doneTodos} />
       </MyContext.Provider>
     </>
   );

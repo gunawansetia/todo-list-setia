@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { useContext, useState } from "react";
 import { MyContext } from "../../App";
 
-const DaySelect = ({ value, onChange }) => {
+const DaySelect = ({ value, onChange, readOnly }) => {
   const [select, setSelect] = useState(value);
   const { initDaySelect } = useContext(MyContext);
 
@@ -32,6 +32,7 @@ const DaySelect = ({ value, onChange }) => {
             today: select === "today",
             tomorrow: select === "tomorrow",
           })}
+          readOnly={readOnly}
           inputProps={{ "aria-label": "Day Select" }}
         >
           {initDaySelect.map((item, index) => {
@@ -49,6 +50,8 @@ const DaySelect = ({ value, onChange }) => {
 
 DaySelect.propTypes = {
   value: PropTypes.string,
+  onChange: PropTypes.func,
+  readOnly: PropTypes.bool,
 };
 
 export default DaySelect;

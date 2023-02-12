@@ -34,7 +34,7 @@ const Todos = ({ todos, updateDay }) => {
 
 Todos.propTypes = {
   todos: PropTypes.array,
-  onSubmit: PropTypes.object,
+  updateDay: PropTypes.func,
 };
 
 export default Todos;

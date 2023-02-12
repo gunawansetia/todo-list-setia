@@ -29,7 +29,7 @@ const UseSelect = styled(Select)(() => ({
   },
 }));
 
-const PrioritySelect = ({ value }) => {
+const PrioritySelect = ({ value, readOnly }) => {
   const [select, setSelect] = useState(value ? value : "");
 
   const handleChange = (e) => {
@@ -50,6 +50,7 @@ const PrioritySelect = ({ value }) => {
           id="priority-select"
           value={select}
           onChange={handleChange}
+          readOnly={readOnly}
         >
           {initPrioritySelect.map((item, index) => {
             return (
@@ -66,6 +67,7 @@ const PrioritySelect = ({ value }) => {
 
 PrioritySelect.propTypes = {
   value: PropTypes.string,
+  readOnly: PropTypes.bool,
 };
 
 export default PrioritySelect;
